@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
-const mongoUri = process.env.MONGO_URI || "mongodb+srv://vasu:vasu2007@cluster0.vawug1q.mongodb.net/?appName=Cluster0";
+const mongoUri = process.env.MONGO_URI;
+
+if (!mongoUri) {
+    throw new Error("MONGO_URI environment variable is not set");
+}
 
 const connectDb = async () => {
     try {
